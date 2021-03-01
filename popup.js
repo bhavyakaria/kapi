@@ -1,5 +1,29 @@
 //This Chrome extention does not use javascript but future js file will go here
 
+function getLocalStorageValue(key) {
+    return new Promise((resolve, reject) => {
+        try {
+            chrome.storage.local.get(key, function (value) {
+                resolve(value);
+            });
+        }
+        catch (ex) {
+            reject(ex);
+        }
+    });
+}
+
+function loadData() {
+    getLocalStorageValue("total_links").then((res) => {
+
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    loadData();
+});
+
+
 function copy(txt) {
     var text = txt;
     navigator.clipboard.writeText(text).then(function () {
@@ -9,21 +33,27 @@ function copy(txt) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+$(function () {
 
-    document.getElementById('website').addEventListener('click', () => {
-        copy('http://bhavyakaria.github.io/');
+    loadData();
+
+    $(".add-link-button").on('click', function (e) {
+        var idClicked = e.target.id;
+
+        getLocalStorageValue('total_links').then((res) => {
+            console.log(JSON.stringify(res));
+            alert(JSON.stringify(res));
+        });
+
+        $('flex').clone().appendTo('.flex-container');
     });
 
-    document.getElementById('linkedin').addEventListener('click', () => {
-        copy('https://www.linkedin.com/in/bhavyakaria/');
+    $(".copy").on('click', function (e) {
+        var idClicked = e.target.id;
+        getLocalStorageValue('sample').then(() => {
+            alert('Sample');
+        });
     });
 
-    document.getElementById('github').addEventListener('click', () => {
-        copy('https://github.com/bhavyakaria');
-    });
-
-    document.getElementById('stack-overflow').addEventListener('click', () => {
-        copy('https://stackoverflow.com/users/4511489/bhavya-karia');
-    });
 });
+

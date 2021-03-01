@@ -6,6 +6,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <style>
         /* Modal Structure */
 
@@ -38,12 +39,6 @@
             width: 30px;
         }
 
-        .modal-header {
-            align-items: center;
-            text-align: center;
-            border-bottom: 0.5px solid #dadada;
-        }
-
         .modal-content {
             padding: 0 22px;
             text-align: center;
@@ -56,7 +51,9 @@
         }
 
         .logo {
-            padding: 16px;
+            padding: 16px 16px 0 16px;
+            display: flex;
+            text-align: center;
         }
 
         .logo-icon {
@@ -90,37 +87,56 @@
             margin: 5px;
             border-radius: 5px;
         }
+
+        .header {
+            display: flex;
+            align-items: center;
+        }
+
+        .add-link-button {
+            margin: auto;
+            align-items: center;
+        }
+
+        #input-box {
+            padding: 15px;
+        }
+
+        #link {
+            width: 70%;
+        }
     </style>
     <script src="popup.js"></script>
 </head>
 
 <body>
-    <div class="modal-header">
+    <div class="header">
         <h1 class="logo">
             Kapi - Copy that!
         </h1>
     </div>
-    <div class="modal-content">
-        <p>Easily Access Your Social Media Profiles</p>
+    <div id="input-box">
+        <input type="text" id="link" name="link">
+        <input type="Submit" value="Add Link" id="add-link-button" name="action" class="add-link-button" />
     </div>
     <div class="modal-icons">
         <div class="flex-container">
             <div class="flex">
                 <i class="fa fa-link"></i>
                 </i><br>
-                <button class="copy-btn" id="website">Copy</button>
+                <input id="website" type="Submit" value="Copy" class="copy" />
             </div>
             <div class="flex">
                 <i class="fa fa-linkedin" style="color: #0e76a8;"></i><br>
-                <button class="copy-btn" id="linkedin">Copy</button>
+                <input id="linkedin" type="Submit" value="Copy" class="copy" />
             </div>
             <div class="flex">
                 <i class="fa fa-github"></i><br>
-                <button class="copy-btn" id="github">Copy</button>
+                <input id="github" type="Submit" value="Copy" class="copy" />
             </div>
             <div class="flex">
                 <i class="fa fa-stack-overflow"></i><br>
-                <button class="copy-btn" id="stack-overflow">Copy</button>
+                <input id="stack-overflow" type="Submit" value="Copy" class="copy" />
                 </a>
             </div>
         </div>
